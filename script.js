@@ -31,3 +31,27 @@ alert('Hola ' + nombreUsuario + ', tienes ' + edadUsuario + ' años.');
 console.log('Nombre:', nombreUsuario);
 console.log('Edad:', edadUsuario);
 console.log('Tipo de edad:', typeof edadUsuario);
+// --- Operadores aritméticos ---
+let a = 20;
+let b = 7;
+
+console.log('Suma:', a + b);
+console.log('Resta:', a - b);
+console.log('Multiplicación:', a * b);
+console.log('División:', a / b);
+console.log('Módulo:', a % b);
+
+// --- ¿Qué resultado esperas? ---
+console.log('5' + 3);
+console.log(5 + 3);
+console.log('5' - 3);
+
+// --- Template literals ---
+let saludo2 = `Hola ${nombreUsuario}, tienes ${edadUsuario} años.`;
+console.log(saludo2);
+
+// --- Calculadora de edad ---
+let anioActual = 2026;
+let anioNacimiento = anioActual - Number(edadUsuario);
+
+console.log(`Hola ${nombreUsuario}, naciste aproximadamente en ${anioNacimiento}.`);
