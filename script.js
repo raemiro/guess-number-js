@@ -51,3 +51,19 @@ function verificarIntento() {
   inputIntento.focus();
 }
 btnAdivinar.addEventListener("click", verificarIntento);
+function reiniciarJuego() {
+  numeroSecreto = Math.floor(Math.random() * 100) + 1;
+  intentos = 0;
+  historialIntentos = [];
+
+  contador.textContent = "Intentos: 0";
+  historial.textContent = "Historial: ";
+  mostrarMensaje("🎯 Nuevo juego iniciado", "#e94560");
+
+  btnAdivinar.disabled = false;
+  btnReiniciar.style.display = "none";
+
+  tarjeta.style.borderColor = "rgba(233, 69, 96, 0.3)";
+}
+
+btnReiniciar.addEventListener("click", reiniciarJuego);
