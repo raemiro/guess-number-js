@@ -1,57 +1,53 @@
-// --- Variables con let (pueden cambiar) ---
-let nombre = 'Ramiro';
-let edad = 16;
-let estaAprendiendo = true;
+// === ADIVINA EL NÚMERO ===
+console.log('=== Adivina el Número ===');
 
-// --- Imprime cada variable ---
-console.log(nombre);
-console.log(edad);
-console.log(estaAprendiendo);
+// --- Generar número secreto ---
+const numeroSecreto = Math.floor(Math.random() * 100) + 1;
 
-// --- Verifica los tipos de dato ---
-console.log(typeof nombre);
-console.log(typeof edad);
-console.log(typeof estaAprendiendo);
+// DEBUG (para ver el número en consola)
+console.log('(DEBUG) Número secreto:', numeroSecreto);
 
-// --- Variables con const (no pueden cambiar) ---
-const curso = 'Code 101';
-const maxIntentos = 10;
+// --- Pedir intento ---
+let intento = prompt('Adivina el número (1-100):');
+intento = Number(intento);
 
-console.log(curso);
-console.log(maxIntentos);
+// --- Validar entrada ---
+if (isNaN(intento)) {
+  alert('⚠️ Eso no es un número. Por favor ingresa un número del 1 al 100.');
+  console.log('Entrada inválida: no es número');
+} else if (intento < 1 || intento > 100) {
+  alert('⚠️ El número debe estar entre 1 y 100.');
+  console.log('Entrada inválida: fuera de rango');
+} else if (intento === numeroSecreto) {
+  alert('🎉 ¡Correcto! El número era ' + numeroSecreto);
+  console.log('Resultado: ¡GANÓ!');
+} else if (intento > numeroSecreto) {
+  alert('📈 Muy alto. Intenta un número más bajo.');
+  console.log('Resultado: muy alto');
+} else {
+  alert('📉 Muy bajo. Intenta un número más alto.');
+  console.log('Resultado: muy bajo');
+}
 
-// --- Entrada del usuario ---
-let nombreUsuario = prompt('¿Cómo te llamas?');
-let edadUsuario = prompt('¿Cuántos años tienes?');
+// --- Pista de cercanía (ternario) ---
+let diferencia = Math.abs(intento - numeroSecreto);
+let cercania = diferencia <= 10 ? '🔥 ¡Estás cerca!' : '❄️ Estás lejos';
+console.log('Cercanía:', cercania);
 
-// --- Salida al usuario ---
-alert('Hola ' + nombreUsuario + ', tienes ' + edadUsuario + ' años.');
+// --- Segundo intento (si no acertó y fue válido) ---
+if (!isNaN(intento) && intento >= 1 && intento <= 100 && intento !== numeroSecreto) {
+  let intento2 = prompt('Intenta de nuevo (1-100):');
+  intento2 = Number(intento2);
 
-// --- Verifica en consola ---
-console.log('Nombre:', nombreUsuario);
-console.log('Edad:', edadUsuario);
-console.log('Tipo de edad:', typeof edadUsuario);
-// --- Operadores aritméticos ---
-let a = 20;
-let b = 7;
-
-console.log('Suma:', a + b);
-console.log('Resta:', a - b);
-console.log('Multiplicación:', a * b);
-console.log('División:', a / b);
-console.log('Módulo:', a % b);
-
-// --- ¿Qué resultado esperas? ---
-console.log('5' + 3);
-console.log(5 + 3);
-console.log('5' - 3);
-
-// --- Template literals ---
-let saludo2 = `Hola ${nombreUsuario}, tienes ${edadUsuario} años.`;
-console.log(saludo2);
-
-// --- Calculadora de edad ---
-let anioActual = 2026;
-let anioNacimiento = anioActual - Number(edadUsuario);
-
-console.log(`Hola ${nombreUsuario}, naciste aproximadamente en ${anioNacimiento}.`);
+  if (isNaN(intento2) || intento2 < 1 || intento2 > 100) {
+    alert('⚠️ Entrada inválida. El número era ' + numeroSecreto);
+    console.log('Segundo intento inválido');
+  } else if (intento2 === numeroSecreto) {
+    alert('🎉 ¡Correcto en el segundo intento! El número era ' + numeroSecreto);
+    console.log('Ganó en segundo intento');
+  } else {
+    let pista = intento2 > numeroSecreto ? 'alto' : 'bajo';
+    alert(`Muy ${pista}. El número era ${numeroSecreto}`);
+    console.log('Perdió en segundo intento');
+  }
+}
