@@ -3,11 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <title>Adivina el Número</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1a1a2e;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .card {
+      background: #16213e;
+      padding: 30px;
+      border-radius: 16px;
+      width: 320px;
+      text-align: center;
+      border: 2px solid rgba(233, 69, 96, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: 0.3s;
+    }
+
+    input {
+      width: 80%;
+      padding: 8px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      text-align: center;
+    }
+
+    button {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: #e94560;
+      color: white;
+      margin-top: 5px;
+    }
+
+    #btnReiniciar {
+      display: none;
+      background: #00adb5;
+    }
+
+    #mensaje {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    #contador, #historial {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Mi primer programa en JavaScript</h1>
+
+  <div class="card" id="game-card">
+    <h2>Adivina el Número 🎯</h2>
+
+    <input type="number" id="inputIntento" placeholder="1 - 100">
+
+    <br>
+
+    <button id="btnAdivinar">Adivinar</button>
+    <button id="btnReiniciar">Reiniciar</button>
+
+    <div id="mensaje"></div>
+    <div id="contador">Intentos: 0</div>
+    <div id="historial">Historial: </div>
+  </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
-// Lab 10 completo
